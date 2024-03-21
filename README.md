@@ -14,11 +14,11 @@ composer install
 ## Step 3 - Build the frontend
 Run `npm i` to install node dependencies. This project uses the following versions:
 ```bash
-lstahl@lynn-work:~/$ npm -v
+lstahl@lynn:~/$ npm -v
 8.15.0
-lstahl@lynn-work:~/$ node -v
+lstahl@lynn:~/$ node -v
 v18.7.0
-lstahl@lynn-work:~/$ gulp -v
+lstahl@lynn:~/$ gulp -v
 CLI version: 2.3.0
 Local version: 4.0.2
 ```
