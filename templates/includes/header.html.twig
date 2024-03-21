@@ -1,0 +1,44 @@
+{% if page.drawer %}
+  <section class="drawer" role="complementary" aria-label="Site Search">{{ page.drawer }}</section>
+{% endif %}
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-sm-3">{{ page.header }}</div>
+      <div class="col-xs-6 col-sm-9">
+        <div class="nav-wrapper">
+          <div class="nav">
+            <div class="nav-toggle" aria-label="press enter to open the menu" tabindex="0">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu">{{ page.navigation }}</div>
+            <div class="utility">{{ page.utility }}</div>
+          </div>
+          <div class="toggles">
+            <div class="search-toggle" aria-label="press enter to open the search" tabindex="0">
+              <i class="icon-search"></i>
+            </div>
+            <div class="nav-toggle" aria-label="press enter to open the menu" tabindex="0">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-search" aria-label="Primary">
+      <form method="get" action="/search/results" autocomplete="off">
+        <div class="form-item inline">
+          <input autocomplete="off" type="text" name="keywords" placeholder="What are you looking for?" aria-label="Please enter your search keywords" />
+          <button class="btn-search" type="submit" aria-label="click to submit search"><i class="icon-search"></i></button>
+          <div class="search-toggle" aria-label="press enter to close the search" tabindex="0">
+            <i class="icon-close"></i>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</header>

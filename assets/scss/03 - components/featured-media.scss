@@ -1,0 +1,190 @@
+@import '../utilities.scss';
+
+.base__featured-media {
+    margin: $space-xl 0;
+
+    .inner {
+        display: grid;
+        gap: $space-xl;
+        grid: auto / 2fr 1fr;
+
+        @include breakpoint(sm-max) {
+            grid: auto / 1fr;
+        }
+    }
+
+    &.right {
+        .inner {
+            grid: auto / 1fr 2fr;
+
+            @include breakpoint(sm-max) {
+                grid: auto / 1fr;
+            }
+        }
+
+        .img {
+            order: 1;
+            grid-column: 2;
+
+            @include breakpoint(sm-max) {
+                grid-column: 1;
+                order: 0;
+            }
+        }
+    }
+
+    &.has-bg {
+
+        &.primary {
+            .blurb {
+                background: $primary;
+            }
+        }
+
+        &.secondary {
+            .blurb {
+                background: $secondary;
+            }
+        }
+
+        &.tertiary {
+            .blurb {
+                background: $tertiary;
+            }
+
+            .action-link {
+                @include action-link($tertiary, $gray-dk);
+            }
+        }
+
+        &.gray {
+            .blurb {
+                background: $gray-dk;
+            }
+        }
+
+        &.black {
+            .blurb {
+                background: #000;
+            }
+        }
+
+        &.white {
+            .blurb {
+                background: #fff;
+                h2,
+                h3,
+                h4 {
+                    color: $primary;
+                }
+                p {
+                    color: $gray-dk;
+                }
+            }
+        }
+
+        .inner {
+            gap: 0;
+        }
+
+        .blurb {
+            align-content: center;
+            color: #fff;
+            display: grid;
+            justify-items: left;
+            min-height: 100%;
+            padding: $space-xl;
+
+            @include breakpoint(sm-max) {
+                padding: $space-md;
+            }
+
+            h2,
+            h3,
+            h4 {
+                color: #fff;
+            }
+        }
+    }
+
+    .blurb {
+        align-self: center;
+        position: relative;
+        z-index: 2;
+
+        h2,
+        h3,
+        h4 {
+            color: $primary;
+        }
+    }
+
+    .img {
+        overflow: hidden;
+
+        &.has-video {
+            position: relative;
+
+            &::before {
+                border-style: solid;
+                border-width: 30px 0 30px 50px;
+                border-color: transparent transparent transparent #fff;
+                content: "";
+                height: 0;
+                left: 50%;
+                pointer-events: none;
+                position: absolute;
+                top: 50%;
+                width: 0;
+                z-index: 1;
+                @include translate(-50%, -50%);
+            }
+
+            &::after {
+                background: rgba(#000, .3);
+                content: "";
+                height: 100%;
+                left: 0%;
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                width: 100%;
+                @include transition(background .3s linear);
+            }
+
+            &:hover {
+                &::after {
+                    background: rgba(#000, .6);
+                }
+            }
+        }
+
+        img {
+            // aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+    }
+}
+
+.base__layout {
+    .base__featured-media {
+        @include breakpoint(lg) {
+            margin: $space-xl auto;
+            width: 85%;
+        }
+        @include breakpoint(sm-max) {
+            margin: 0 auto;
+        }
+    }
+    .grid {
+        &.two,
+        &.three,
+        &.four {
+            .base__featured-media {
+                .inner {
+                    grid: auto / 1fr;
+                }
+            }
+        }
+    }
+}

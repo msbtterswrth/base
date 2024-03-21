@@ -1,0 +1,126 @@
+@import '../utilities.scss';
+
+.section {
+  &.has-bg {
+    padding: calc(1.5 * $space-xl) $space-md calc(1.5 * $space-xl);
+
+    @include breakpoint(xs) {
+      padding: $space-lg 0;
+    }
+  }
+
+  &.primary {
+    background: $primary;
+    color: #fff;
+
+    &::before {
+      content: "";
+      background: url(/themes/custom/base/assets/img/pattern-blue.svg) no-repeat bottom right;
+      background-size: cover;
+      height: 100%;
+      left: 0;
+      opacity: .2;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    a {
+      color: $tertiary;
+
+      &:hover,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
+
+  &.secondary {
+    background: $secondary;
+    color: #fff;
+
+    &::before {
+      content: "";
+      background: url(/themes/custom/base/assets/img/dots-pattern.png) no-repeat bottom right;
+      background-size: cover;
+      height: 100%;
+      left: 0;
+      opacity: .2;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  &.tertiary {
+    background: $tertiary;
+    color: #fff;
+  }
+
+  &.black {
+    background: #000;
+    color: #fff;
+  }
+
+  &.gray {
+    background: $gray-lt;
+
+    .heading {
+      color: $primary;
+    }
+  }
+
+  &.white {
+    background: #fff;
+    padding: $space-xl $space-md;
+
+    @include breakpoint(xs) {
+      padding: $space-lg 0;
+    }
+
+    .heading {
+      color: $primary;
+    }
+  }
+
+  &.bordered {
+    background: #fff;
+    padding: $space-xl $space-md;
+
+    > .container {
+      &::after {
+        border-bottom: 1px solid $gray;
+        content: "";
+        padding-top: $space-md;
+        position: relative;
+        width: 100%;
+      }
+    }
+
+    .heading {
+      color: $primary;
+    }
+  }
+
+  .body-text {
+    margin: 0 auto $space-lg;
+    text-align: center;
+
+    @include breakpoint(lg) {
+      width: 65%;
+    }
+
+    &:last-child {
+      margin: 0 auto;
+    }
+  }
+
+  .heading {
+    margin: 0 0 $space-lg 0;
+    text-align: center;
+  }
+}
+
+.bottom-sections {
+  margin-top: 50px;
+}

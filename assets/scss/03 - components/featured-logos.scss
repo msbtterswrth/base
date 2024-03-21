@@ -1,0 +1,27 @@
+@import '../utilities.scss';
+
+.featured-logos {
+    .grid {
+        align-items: center;
+    }
+
+    .img {
+        margin-bottom: $space-md;
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .slick-slider {
+        .slick-track {
+            align-items: center;
+            display: flex;
+
+            .slick-slide {
+                margin: 0 $space-xl;
+            }
+        }
+    }
+}

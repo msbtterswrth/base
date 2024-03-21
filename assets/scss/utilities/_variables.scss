@@ -1,0 +1,68 @@
+/*COLORS*/
+$gray-xl: #f4f4f4;
+$gray-lt: #F8F8F8;
+$gray: #C2C2C2;
+$gray-md: #6f6f6f;
+$gray-dk: #1F1F1F;
+$red-lt: #e0938d;
+$red: #cc4b42;
+$red-dk: #8e342e;
+$orange-lt: #fcbaa9;
+$orange: #f45b1f;
+$orange-dk: #c34818;
+$gold-lt: #fccf8e;
+$gold: #f99f1e;
+$gold-dk: #e08f1b;
+$green-lt: #b4db4c;
+$green: #94CC00;
+$green-dk: #7DA906;
+$blue-lt: #4285BA;
+$blue: #003B87;
+$blue-dk: #003764;
+$teal-lt: #a5e5f2;
+$teal: #00bbde;
+$teal-dk: #0f7384;
+$purple-lt: #cea2d0;
+$purple: #9d45a2;
+$purple-dk: #521e59;
+$pink-lt: #ff92a4;
+$pink: #ff647d;
+$pink-dk: #cc5064;
+
+$primary: $blue;
+$primary-lt: $blue-lt;
+$primary-dk: $blue-dk;
+$secondary: $green;
+$secondary-lt: $green-lt;
+$secondary-dk: $green-dk;
+$tertiary: $pink;
+$tertiary-lt: $pink-lt;
+$tertiary-dk: $pink-dk;
+
+/*FONTS*/
+$font-script: 'Barlow', sans-serif;
+$font-display: 'Barlow', sans-serif;
+$font-sans: 'Maven Pro', sans-serif;
+$font-xxs: 16px;
+$font-xs: 18px;
+$font-sm: 24px;
+$font-md: 32px;
+$font-lg: 40px;
+$font-xl: 60px;
+$font-xxl: 72px;
+$font-hero: 100px;
+
+/*BORDER RADIUS*/
+$border-radius: 0;
+$border-radius-lg: 30px;
+
+/*CSS ANIMATIONS*/
+$cubic: cubic-bezier(0.0, 0.0, 0.2, 1);
+
+/*SPACING*/
+$space-xs: 5px;
+$space-sm: 10px;
+$space-md: 20px;
+$space-lg: 30px;
+$space-xl: 50px;
+

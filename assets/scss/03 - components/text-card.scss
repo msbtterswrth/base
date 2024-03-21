@@ -1,0 +1,81 @@
+@import '../utilities.scss';
+
+.base__text-card {
+    height: 100%;
+
+    .inner {
+        border-radius: $border-radius;
+        height: 100%;
+        padding: $space-lg $space-lg $space-xl;
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &.primary {
+        .inner {
+            background: $primary;
+            color: #fff;
+        }
+    }
+
+    &.secondary {
+        .inner {
+            background: $secondary;
+            color: #fff;
+        }
+    }
+
+    &.tertiary {
+        .inner {
+            background: $tertiary;
+            color: #fff;
+        }
+    }
+
+    &.gray {
+        .inner {
+            background: $gray-dk;
+            color: #fff;
+        }
+    }
+
+    &.black {
+        .inner {
+            background: #000;
+            color: #fff;
+        }
+    }
+
+    &.white {
+        .inner {
+            background: #fff;
+            color: $gray-dk;
+        }
+    }
+}
+
+.base__layout {
+    &.one {
+        .text-card {
+            .inner {
+                padding: 90px 30px;
+                text-align: center;
+
+                @include breakpoint(sm-max) {
+                    padding: 30px;
+                }
+
+                .blurb {
+                    @include breakpoint(lg) {
+                        display: block;
+                        margin: 0 auto;
+                        max-width: 80%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "unleashed/base-theme",
+  "description": "Upstream theme for Unleashed's Base theme.",
+  "type": "drupal-theme",
+  "minimum-stability": "dev",
+  "repositories": [
+    {
+        "type": "composer",
+        "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "require": {
+        "drupal/address": "^1.11", 
+        "drupal/current_page_crumb": "^1.3",
+        "drupal/entity_usage": "^2.0@beta",
+        "drupal/field_group": "^3.2",
+        "drupal/focal_point": "^1.5",
+        "drupal/limited_field_widgets": "^2.0",
+        "drupal/paragraphs": "^1.14",
+        "drupal/svg_image": "^1.16",
+        "drupal/token": "^1.11"
+  }
+}

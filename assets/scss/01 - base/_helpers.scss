@@ -1,0 +1,166 @@
+@import '../utilities.scss';
+
+.site-wrap {
+  img {
+    max-width: 100%;
+  }
+
+  .container {
+    position: relative;
+
+    @include breakpoint(xl) {
+      width: 1400px;
+    }
+
+    .container {
+      padding: 0;
+      width: auto !important;
+    }
+  }
+
+  .flush {
+    margin: 0 !important;
+  }
+
+  .unstyled {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .row {
+    &.no-gutter {
+      margin: 0;
+
+      > div {
+        padding: 0;
+      }
+    }
+  }
+
+
+  div[id*="local-tasks"] {
+    ul {
+      list-style-type: none;
+      margin-bottom: $space-md;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        background: $gray-lt;
+        margin: 0;
+        @include transition(background .3s linear);
+
+        @include breakpoint(sm-max) {
+          display: none;
+        }
+
+        &:hover,
+        &:focus {
+          background: $gray;
+
+          a {
+            background: none;
+            color: #fff;
+          }
+        }
+
+        &.is-active {
+          @include breakpoint(sm-max) {
+            display: flex;
+          }
+
+          &::before {
+            border-bottom: 3px solid $primary;
+            z-index: 0;
+          }
+        }
+
+        a {
+          background: none;
+          color: $gray-dk;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  //Status Messages
+  form {
+    .message {
+      margin: 0 15px 20px;
+    }
+  }
+
+  .messages {
+
+    &.messages--error {
+      border-color: $red;
+
+      a {
+        color: $red;
+      }
+    }
+
+    &.messages--warning {
+      border-color: $gold;
+
+      a {
+        color: $gold;
+      }
+    }
+
+    &.messages--status {
+      border-color: $green;
+
+      a {
+        color: $green;
+      }
+    }
+
+    h2 {
+      font-size: $font-md;
+      margin: 0 0 0 2.5rem;
+    }
+
+    a {
+
+      &:hover,
+      &:focus {
+        text-decoration: underline #fff;
+      }
+    }
+  }
+
+  .pager {
+    text-align: left;
+    margin: $space-lg $space-md;
+    clear: both;
+
+    ul {
+      padding: 0;
+
+      li {
+        a {
+          border-radius: 0;
+          padding: $space-sm $space-xs;
+          background: transparent;
+          border: none;
+          border-bottom: 2px solid transparent;
+          color: $gray;
+          text-decoration: none;
+          font-size: $font-xs;
+          @include transition(color .3s linear, border .3s linear);
+        }
+
+        &.is-active,
+        &:hover {
+          a {
+            background: transparent;
+            border-bottom: 2px solid $primary;
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

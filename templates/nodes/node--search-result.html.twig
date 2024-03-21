@@ -1,0 +1,7 @@
+<article{{ attributes.addClass(content_type, "search-result") }}>
+    <div class="text">
+        <div class="type">{{content_type}}</div>
+        <h4><a href="{{ url }}">{{ label }}</a></h4>
+        <p>{{ content.body.0 }}</p>
+    </div>
+</article>

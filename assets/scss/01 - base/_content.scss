@@ -1,0 +1,29 @@
+@charset "UTF-8";
+@import '../utilities.scss';
+
+.site-wrap {
+    section {
+        position: relative;
+
+        .container {
+            position: relative;
+        }
+    }
+
+    .main {
+
+        + .bottom {
+            margin-top: $space-xl;
+        }
+
+        + footer {
+            margin-top: $space-xl;
+        }
+    }
+
+    .feature {
+        + footer {
+            margin-top: 0;
+        }
+    }
+}

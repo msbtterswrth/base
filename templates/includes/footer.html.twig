@@ -1,0 +1,17 @@
+<footer>
+  <section class="footer" aria-label="Footer">
+    <div class="container">{{ page.footer }}</div>
+  </section>
+  <section class="copyright" aria-label="Copyright">
+    <div class="container">
+      {{ page.copyright }}
+      <div class="row">
+        <div class="col-xs-12">
+          <p>
+            © {{ 'now'|date('Y') }} {% trans %} {{ site_name }} All Rights Reserved.{% endtrans %} <span class="hidden-xs">|</span> <a href="/privacy-policy">Privacy Policy</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</footer>

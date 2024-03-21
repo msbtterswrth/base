@@ -1,0 +1,32 @@
+{{ attach_library('base/full-width-cta') }}
+{% set catch_cache = content|render %}
+{% set position = content.field_position[0] %}
+{% set color = paragraph.field_background_color.value %}
+{% if color is not empty %}
+  {% set bg = color ~ ' has-bg ' %}
+{% endif %}
+{% if content.field_background_image[0] %}
+  {% set class = 'has-bgimg ' %}
+  {% set bgimg = file_url(paragraph.field_background_image.entity.field_media_image.entity.fileuri) %}
+{% endif %}
+{% if content.field_image[0] %}
+  {% set img = 'has-img ' %}
+{% endif %}
+{% if content.field_form[0] %}
+  {% set form = 'has-form ' %}
+{% endif %}
+<div class="full-width-cta {{ bg }} {{ class }} {{ img }} {{ form }}" style="background-image: url({{ bgimg }})">
+  <div class="blurb {{ position }} {{ img }}">
+    <div class="container">
+      <div class="inner">
+        {% if content.field_image[0] %}
+          <div class="img">{{ content.field_image }}</div>
+        {% endif %}
+        {% if content.field_form[0] %}
+          <div class="form">{{ content.field_form }}</div>
+        {% endif %}
+        <div class="text">{{ content.field_item }}</div>
+      </div>
+    </div>
+  </div>
+</div>

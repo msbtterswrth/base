@@ -1,0 +1,11 @@
+{{ attach_library('base/facts') }}
+{% set catch_cache = content|render %}
+<div class="fact">
+	<div class="number" data-count="{{ content.field_number.0 }}">
+        <span>{{ content.field_prefix}}</span>
+        <span class="count">{{ content.field_number}}</span>
+		<span>{{ content.field_suffix}}</span>
+    </div>
+	<p>{{ content.field_title.0 }}</p>
+	{{ content.field_link.0 }}
+</div>

@@ -1,0 +1,63 @@
+@import '../utilities.scss';
+
+.site-wrap {
+  .footer {
+    background: $gray-dk;
+    color: #fff;
+    padding: 45px 0;
+
+    @include breakpoint(sm-max) {
+      padding: 25px 15px;
+      text-align: center;
+    }
+
+    h2 {
+      @include breakpoint(lg) {
+        font-size: $font-xxl;
+      }
+    }
+
+    p {
+      color: #fff;
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    a {
+      color: $secondary;
+
+      &:hover,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
+
+  .copyright {
+    background: $gray-dk;
+    color: #fff;
+    padding: $space-md 0;
+
+    p {
+      font-size: $font-xxs;
+      margin-bottom: 0;
+
+      @include breakpoint(sm-max) {
+        text-align: center;
+      }
+    }
+
+    a {
+      color: #fff;
+      text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        color: $secondary;
+        text-decoration: underline #fff;
+      }
+    }
+  }
+}
