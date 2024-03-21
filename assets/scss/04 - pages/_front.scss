@@ -4,42 +4,6 @@
   .base__hero {
     margin-bottom: 0;
 
-    &.has-img {
-      .img {
-        &::before {
-          display: none;
-        }
-
-        + .blurb {
-          color: $gray-dk;
-
-          @include breakpoint(lg) {
-            bottom: calc(3 * $space-xl);
-          }
-
-          h1 {
-            color: $primary;
-            font-size: $font-xxl;
-
-            @include breakpoint(lg) {
-              font-size: $font-hero;
-            }
-          }
-        }
-
-        img {
-          @include breakpoint(lg) {
-            aspect-ratio: 2/1;
-          }
-
-          @include breakpoint(xl) {
-            aspect-ratio: 2.5/1;
-          }
-
-        }
-      }
-    }
-
     .crumbs {
       display: none;
     }
@@ -54,36 +18,6 @@
 
     .content-top {
       display: none;
-    }
-
-    .content {
-      background: $primary;
-      background-size: cover;
-      color: #fff;
-      padding: $space-xl 0;
-
-      @include breakpoint(lg) {
-        padding: 0 0 calc(3 * $space-xl) 0;
-      }
-
-      &::before {
-        content: "";
-        background: url(/themes/custom/base/assets/img/pattern-blue.svg) no-repeat bottom right;
-        height: 100%;
-        left: 0;
-        opacity: .2;
-        position: absolute;
-        top: 0;
-        width: 100%;
-      }
-
-      .main-content {
-        margin-top: 0;
-
-        @include breakpoint(lg) {
-          margin-top: calc(-2 * $space-xl);
-        }
-      }
     }
   }
 }

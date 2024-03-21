@@ -26,9 +26,9 @@
     }
 
     input {
-      background-color: $gray-xl;
+      background-color: #fff;
       border-radius: $border-radius;
-      border: 0;
+      border: 1px solid $secondary;
       box-shadow: none;
       color: #000;
       font-family: $font-sans;
@@ -68,7 +68,7 @@
 
         &:focus,
         &:hover {
-          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $red;
+          box-shadow: 0 0 0 2px #fff, 0 0 0 5px $secondary-lt;
         }
       }
 
@@ -94,9 +94,9 @@
     }
 
     textarea {
-      background: $gray-xl;
+      background: #fff;
       border-radius: $border-radius;
-      border: 0;
+      border: 1px solid $secondary;
       box-shadow: none;
       font-size: $font-xs;
       outline: none;
@@ -171,7 +171,7 @@
 
   select {
     border-radius: $border-radius;
-    border: 2px solid $gray-md;
+    border: 1px solid $secondary;
     box-shadow: none;
     color: $gray-md;
     font-family: $font-sans;
@@ -254,7 +254,7 @@
   }
 
   .form-submit {
-    @include button($secondary, $gray-dk);
+    @extend .btn, .secondary;
   }
 
   .form--inline {

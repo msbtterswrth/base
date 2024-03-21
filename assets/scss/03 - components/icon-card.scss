@@ -1,98 +1,174 @@
 @import '../utilities.scss';
 
 .base__icon-card {
-    height: 100%;
-    text-align: center;
+  height: 100%;
 
+  .inner {
+    background: #fff;
+    color: $gray-dk;
+    display: grid;
+    gap: $space-md;
+    grid: auto / 1fr;
+    min-height: 100%;
+    padding: $space-xl $space-lg;
+
+    @include breakpoint(sm-max) {
+      padding: $space-lg $space-md;
+    }
+
+    .icon {
+      margin: 0 auto;
+      position: relative;
+      text-align: left;
+      width: 100%;
+
+      svg {
+        height: 48px;
+        fill: #000;
+
+        > * {
+
+          fill: #000;
+        }
+      }
+
+      img {
+        width: 100%
+      }
+    }
+
+    p {
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &:not(.has-bg) {
     .inner {
-        background: #fff;
-        color: $gray-dk;
-        display: grid;
-        gap: $space-md;
-        grid: auto / 1fr;
-        height: 100%;
-        padding: $space-xl $space-lg;
-
-        .icon {
-            margin: 0 auto;
-            position: relative;
-            text-align: center;
-            width: 100%;
-
-            svg {
-                height: 140px;
-            }
-            img {
-                width: 100%
-            }
-        }
+      padding: $space-sm;
     }
-    &:not(.has-bg) {
-        .inner {
-            padding: $space-sm;
-        }
+  }
+
+  &.primary {
+    .inner {
+      background: $primary;
+      color: #fff;
     }
 
-    &.primary {
-        .inner {
-            background: $primary;
-            color: #fff;
+    .icon {
+      svg {
+        fill: #fff;
+
+        > * {
+
+          fill: #fff;
         }
+      }
+    }
+  }
+
+  &.primary-lt {
+    .inner {
+      background: $primary-lt;
+      color: #000;
+    }
+  }
+
+  &.primary-dk {
+    .inner {
+      background: $primary-dk;
+      color: #fff;
     }
 
-    &.secondary {
-        .inner {
-            background: $secondary;
-            color: #fff;
+    .icon {
+      svg {
+        fill: #fff;
+
+        > * {
+
+          fill: #fff;
         }
+      }
+    }
+  }
+
+  &.secondary {
+    .inner {
+      background: $secondary;
+      color: #000;
+    }
+  }
+
+  &.tertiary {
+    .inner {
+      background: $tertiary;
+      color: #000;
+    }
+  }
+
+  &.gray {
+    .inner {
+      background: $gray-dk;
+      color: #fff;
     }
 
-    &.tertiary {
-        .inner {
-            background: $tertiary;
-            color: #fff;
+    .icon {
+      svg {
+        fill: #fff;
+
+        > * {
+
+          fill: #fff;
         }
+      }
+    }
+  }
+
+  &.black {
+    .inner {
+      background: #000;
+      color: #fff;
     }
 
-    &.gray {
-        .inner {
-            background: $gray-dk;
-            color: #fff;
-        }
-    }
+    .icon {
+      svg {
+        fill: #fff;
 
-    &.black {
-        .inner {
-            background: #000;
-            color: #fff;
-        }
-    }
+        > * {
 
-    &.white {
-        .inner {
-            background: #fff;
-            color: $gray-dk;
+          fill: #fff;
         }
+      }
     }
+  }
+
+  &.white {
+    .inner {
+      background: #fff;
+      color: $gray-dk;
+    }
+  }
 }
 
 .grid {
-    &.one {
-        .base__icon-card {
-            text-align: left;
-            .inner {
-                grid: auto / 150px 1fr;
+  &.one {
+    .base__icon-card {
+      text-align: left;
 
-                @include breakpoint(xs) {
-                    grid: auto / 1fr;
-                    text-align: center;
-                }
-            }
+      .inner {
+        grid: auto / 150px 1fr;
 
-            + .base__icon-card {
-                border-top: 1px solid $gray;
-                padding-top: 30px;
-            }
+        @include breakpoint(xs) {
+          grid: auto / 1fr;
+          text-align: center;
         }
+      }
+
+      + .base__icon-card {
+        border-top: 1px solid $gray;
+        padding-top: 30px;
+      }
     }
+  }
 }

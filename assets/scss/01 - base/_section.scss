@@ -1,6 +1,8 @@
 @import '../utilities.scss';
 
 .section {
+  color: #000;
+
   &.has-bg {
     padding: calc(1.5 * $space-xl) $space-md calc(1.5 * $space-xl);
 
@@ -12,49 +14,23 @@
   &.primary {
     background: $primary;
     color: #fff;
+  }
 
-    &::before {
-      content: "";
-      background: url(/themes/custom/base/assets/img/pattern-blue.svg) no-repeat bottom right;
-      background-size: cover;
-      height: 100%;
-      left: 0;
-      opacity: .2;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
+  &.primary-lt {
+    background: $primary-lt;
+  }
 
-    a {
-      color: $tertiary;
-
-      &:hover,
-      &:focus {
-        color: #fff;
-      }
-    }
+  &.primary-dk {
+    background: $primary-xdk;
+    color: #fff;
   }
 
   &.secondary {
     background: $secondary;
-    color: #fff;
-
-    &::before {
-      content: "";
-      background: url(/themes/custom/base/assets/img/dots-pattern.png) no-repeat bottom right;
-      background-size: cover;
-      height: 100%;
-      left: 0;
-      opacity: .2;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
   }
 
   &.tertiary {
     background: $tertiary;
-    color: #fff;
   }
 
   &.black {
@@ -63,11 +39,7 @@
   }
 
   &.gray {
-    background: $gray-lt;
-
-    .heading {
-      color: $primary;
-    }
+    background: $gray-xl;
   }
 
   &.white {
@@ -77,10 +49,6 @@
     @include breakpoint(xs) {
       padding: $space-lg 0;
     }
-
-    .heading {
-      color: $primary;
-    }
   }
 
   &.bordered {
@@ -88,17 +56,23 @@
     padding: $space-xl $space-md;
 
     > .container {
-      &::after {
-        border-bottom: 1px solid $gray;
+      &::before {
+        border-top: 5px solid $primary-lt;
         content: "";
+        margin: 0 auto;
+        padding-bottom: $space-md;
+        position: relative;
+        width: 60%;
+      }
+
+      &::after {
+        border-bottom: 5px solid $primary-lt;
+        content: "";
+        margin: 0 auto;
         padding-top: $space-md;
         position: relative;
-        width: 100%;
+        width: 60%;
       }
-    }
-
-    .heading {
-      color: $primary;
     }
   }
 
@@ -118,6 +92,12 @@
   .heading {
     margin: 0 0 $space-lg 0;
     text-align: center;
+  }
+
+  .paragraph {
+    + .paragraph--type--wysiwyg {
+      margin-top: $space-xl;
+    }
   }
 }
 

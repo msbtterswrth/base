@@ -35,10 +35,12 @@ class Theme {
   public static function getSiteWrapClasses(&$vars) {
     $wrap = new Attribute();
     $wrap->addClass('site-wrap');
+
     if ($vars['is_front']) {
       $wrap->addClass('home-wrap');
     }
     $vars['wrap'] = $wrap;
+
   }
 
   /**

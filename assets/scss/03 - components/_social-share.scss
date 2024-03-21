@@ -1,75 +1,47 @@
 @import '../utilities.scss';
+
 .site-wrap {
-    .social-share {
-        position: relative;
-        z-index: 1;
-        > * {
-            color: #fff;
-            display: inline-block;
-            line-height: 43px;
-            font-size: 25px;
-            text-align: center;
-            text-decoration: none !important;
-            width: 40px;
-            height: 40px;
-            @include transition(background .3s linear);
-            @include breakpoint(xs) {
-                display:inline-block;
-            }
-            &.facebook {
-                background:#3b5998;
-                &:hover, &:focus {
-                    color:#fff;
-                    background:darken(#3b5998,10%);
-                }
-            }
-            &.twitter {
-                background:#1da1f2;
-                &:hover, &:focus {
-                    color:#fff;
-                    background:darken(#1da1f2,10%);
-                }
-            }
-            &.email {
-                background:$tertiary;
-                &:hover, &:focus {
-                    color:#fff;
-                    background:darken(#323a45,10%);
-                }
-            }
-            &.copy-link {
-                background:$green;
-                cursor: pointer;
-                position: relative;
-                &:hover, &:focus {
-                    color:#fff;
-                    background:darken($gray-dk,10%);
-                    &::before {
-                        background: $gray-dk;
-                        bottom: 0;
-                        color: #fff;
-                        content: "Copy Link";
-                        font-size: 16px;
-                        line-height: 18px;
-                        left: calc(100% + 10px);
-                        padding: 10px;
-                        position: absolute;
-                        white-space: nowrap;
-                        @include breakpoint(xs) {
-                            left: 0;
-                            bottom:calc(100% + 10px);
-                        }
-                    }
-                }
-                &.success {
-                    &:hover, &:focus {
-                        &::before {
-                            content:"Copied!";
-                            background:$primary;
-                        }
-                    }
-                }
-            }
-        }
+  .social-share {
+    align-items: center;
+    display: flex;
+    gap: $space-sm;
+    position: relative;
+    z-index: 1;
+
+    &::before,
+    &::after {
+      display: none;
     }
+
+    span {
+      color: $secondary;
+      font-family: $font-display;
+      font-size: $font-xs;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    a {
+      background: $primary-dk;
+      color: #fff;
+      display: inline-block;
+      line-height: 43px;
+      font-size: 25px;
+      text-align: center;
+      text-decoration: none !important;
+      width: 40px;
+      height: 40px;
+      @include transition(background .3s linear);
+
+      @include breakpoint(xs) {
+        display: inline-block;
+      }
+
+      &:hover,
+      &:focus {
+        background: $primary;
+      }
+    }
+  }
 }

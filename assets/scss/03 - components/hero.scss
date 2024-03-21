@@ -1,294 +1,171 @@
 @import '../utilities.scss';
 
-.banner {
-    &:has(+ .top) {
+.hero-wrap {
+  margin-bottom: $space-xl;
 
-        &:has(.has-text) {
-            .base__hero {
-                margin-bottom: -100px;
-            }
-
-            + .top {
-                .section.has-bg {
-                    padding-top: 200px;
-                }
-            }
-        }
-    }
-
-    &.has-text {
-        .base__hero {
-            margin-bottom: -100px;
-        }
-
-        + .top {
-            .section.has-bg {
-                padding-top: 200px;
-            }
-        }
-    }
-
-    @-moz-document url-prefix() {
-        &:has(.has-text) {
-            .base__hero {
-                margin-bottom: -100px;
-            }
-
-            + .top {
-                .section.has-bg {
-                    padding-top: 200px;
-                }
-            }
-        }
-    }
+  @include breakpoint(sm-max) {
+    margin-bottom: $space-md;
+  }
 }
 
 .base__hero {
-    // margin-bottom: $space-xl;
-    position: relative;
+  background: $primary-xdk;
+  border-bottom: 4px solid $secondary;
+  position: relative;
 
-    &.has-img {
-        margin-bottom: 0;
-        .img {
-            position: relative;
-            @include breakpoint(sm-max) {
-                display: none;
-            }
+  &.has-img {
+    border-bottom: none;
+    margin-bottom: 0;
 
-            &::before {
-                background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
-                content: "";
-                height: 100%;
-                left: 0;
-                position: absolute;
-                top: 0;
-                width: 100%;
-            }
+    .img {
+      position: relative;
 
-            img {
-                object-fit: cover;
-                width: 100%;
-                aspect-ratio: 2 / 1;
+      &::before {
+        background: rgba(0, 0, 0, .5);
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
 
-                @include breakpoint(xs) {
-                    aspect-ratio: 2.5 / 3;
-                }
-
-                @include breakpoint(lg) {
-                    aspect-ratio: 4 / 1;
-                }
-            }
-
-            + .blurb {
-                bottom: calc($space-lg * 2);
-                color: #fff;
-                display: inline;
-                position: absolute;
-                width: 100%;
-                z-index: 2;
-
-                @include breakpoint(sm-max) {
-                    bottom: 0;
-                    color: $gray-dk;
-                    display: block;
-                    padding: $space-lg 0;
-                    position: relative;
-                    text-align: left;
-                }
-
-                &.right {
-                    .inner {
-                        float: right;
-                        text-align: right;
-
-                        @include breakpoint(md) {
-                            width: 65%;
-                        }
-
-                        @include breakpoint(lg) {
-                            width: 55%;
-                        }
-                    }
-                }
-
-                &.left {
-                    .inner {
-                        float: left;
-                        text-align: left;
-
-                        @include breakpoint(md) {
-                            width: 65%;
-                        }
-
-                        @include breakpoint(lg) {
-                            width: 55%;
-                        }
-                    }
-                }
-
-                h1 {
-                    color: #fff;
-                    @include breakpoint(sm-max) {
-                        color: $primary;
-                    }
-                }
-            }
-
-        }
-    }
-
-    &:not(.has-img) {
-        background: linear-gradient(315deg, $primary-dk 0.03%, $primary 100%);
-        color: #fff;
-        overflow: hidden;
-        padding: 100px 0;
-        position: relative;
+      img {
+        aspect-ratio: 2.5 / 1;
+        display: block;
+        object-fit: cover;
+        width: 100%;
 
         @include breakpoint(xs) {
-            padding: $space-xl 0;
+          aspect-ratio: 2.5 / 3;
         }
 
-        @media print {
-            padding: $space-lg 0;
-        }
-        &::before {
-            content: "";
-            background: url(/themes/custom/base/assets/img/pattern-blue.svg) no-repeat bottom right;
-            background-size: cover;
-            height: 100%;
-            left: 0;
-            opacity: .2;
-            position: absolute;
-            top: 0;
-            width: 100%;
+        @include breakpoint(xxxs) {
+          aspect-ratio: 2.5 / 4;
         }
 
-        .blurb {
-            color: #fff;
-
-            .lead {
-                color: #fff;
-            }
+        @include breakpoint(sm) {
+          aspect-ratio: 3 / 2;
         }
+
+        @include breakpoint(xl) {
+          aspect-ratio: 3 / 1;
+        }
+      }
+
+      + .blurb {
+        bottom: calc($space-lg * 2);
+        display: inline;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+
+        @include breakpoint(sm-max) {
+          bottom: 0;
+          display: block;
+          padding: $space-lg $space-md;
+        }
+      }
+    }
+  }
+
+
+
+  &.has-video {
+    .img {
+      &::before {
+        background: rgba(0, 0, 0, .7) !important;
+      }
+
+      img {
+        aspect-ratio: 2 / 1;
+
+        @include breakpoint(xs) {
+          aspect-ratio: 2 / 3;
+        }
+
+        @include breakpoint(lg) {
+          aspect-ratio: 5 / 2;
+        }
+
+        opacity: 0;
+
+        @include breakpoint(sm-max) {
+          opacity: 1;
+        }
+      }
     }
 
-    &.has-text {
-        margin-bottom: calc(2 * $space-xl);
+    .video {
+      height: 100%;
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
 
-        .img {
-            min-height: 700px;
-            aspect-ratio: 2 / 1;
+      @include breakpoint(sm-max) {
+        display: none;
+      }
+    }
+  }
 
-            @include breakpoint(xs) {
-                aspect-ratio: 2.5 / 3;
-            }
+  &:not(.has-img) {
+    background: $primary-xdk;
+    color: #fff;
+    overflow: hidden;
+    padding: $space-xl 0;
+    position: relative;
 
-            @include breakpoint(sm-max) {
-                display: block;
-                min-height: 600px;
-            }
-            
-            @include breakpoint(lg) {
-                aspect-ratio: 3 / 1;
-            }
-            &::before {
-                background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
-            }
-            + .blurb {
-                bottom: -60px !important;
-                left: 0;
-                @include breakpoint(sm-max) {
-                    position: absolute;
-                }
-                h1 {
-                    @include breakpoint(sm-max) {
-                        color: #fff;
-                    }
-                }
-            }
-        }
-
-        .intro {
-            background: #fff;
-            color: $gray-dk;
-            margin-top: calc(2 * $space-xl);
-            padding: $space-xl;
-
-            .text-formatted {
-                margin: 0 auto;
-                width: 80%;
-                @include breakpoint(sm-max) {
-                    width: 100%;
-                }
-
-                h2 {
-                    color: $primary;
-                }
-            }
-        }
+    @include breakpoint(xs) {
+      padding: $space-lg 0;
     }
 
-    .blurb {
-        text-align: center;
+    @media print {
+      padding: $space-lg 0;
+    }
+  }
 
-        h1 {
-            font-family: $font-display;
-            font-size: $font-hero;
-            line-height: 1em;
-            margin-bottom: $space-xl;
 
-            @include breakpoint(sm-max) {
-                font-size: $font-xxl;
-                line-height: 1em;
-                margin-bottom: 0;
-            }
-        }
-        p {
-            &:last-child {
-                margin: 0;
-            }
-        }
 
-        .crumbs {
-            border: none;
+  .intro {
+    max-width: 800px;
+  }
 
-            @include breakpoint(sm-max) {
-                display: none;
-            }
-
-            .breadcrumb {
-                color: #fff;
-            }
-
-            a {
-
-                &:hover,
-                &:focus {
-                    color: #fff;
-                }
-            }
-
-            span {
-                color: #fff!important;
-            }
-        }
+  .blurb {
+    h1 {
+      color: #fff;
+      font-family: $font-display;
+      font-size: $font-xxl;
+      line-height: 1em;
     }
 
-    + .crumbs {
-        color: $gray-dk;
-        margin: 20px 0 30px;
+    p {
+      color: #fff;
+      font-size: $font-sm;
 
-        span {
-            color: $primary-lt;
-        }
-
-        a {
-            color: $primary;
-
-            &:hover,
-            &:focus {
-                color: $primary-lt;
-            }
-        }
+      &:last-child {
+        margin: 0;
+      }
     }
+  }
+
+  + .crumbs {
+    color: $gray-dk;
+    margin: 20px 0 30px;
+
+    span {
+      color: $primary-lt;
+    }
+
+    a {
+      color: $primary;
+
+      &:hover,
+      &:focus {
+        color: $primary-lt;
+      }
+    }
+  }
 }

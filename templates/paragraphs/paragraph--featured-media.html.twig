@@ -4,31 +4,33 @@
 {% set position = paragraph.field_position.value %}
 {% set color = paragraph.field_background_color.value %}
 {% if color is not empty %}
-    {% set bg = color ~ ' has-bg'%}
+{% set bg = color ~ ' has-bg'%}
 {% endif %}
 {% if paragraph.field_heading_size.value %}
-    {% set heading = paragraph.field_heading_size.value %}
-{% else%}    
-    {% set heading = "h2" %}
+{% set heading = paragraph.field_heading_size.value %}
+{% else%}
+{% set heading = "h2" %}
 {% endif %}
-  <div class="base__featured-media {{bg}} {{position}}">
-    <div class="inner">
-        {% if content.field_link.0 %}
-            <a href="{{ paragraph.field_link.0.url }}">
-        {% endif %}
-            <div class="img">{{content.field_media}}</div>
-        {% if content.field_link.0 %}
-            </a>
-        {% endif %}
-        <div class="blurb">          
-            {% if content.field_title.0 %}
-                <{{heading}}>{{content.field_title.0}}</{{heading}}>
-            {% endif %}
-            {{ content.field_rich_text }} 
-            {% if paragraph.field_link.0.title %}
-                <a href="{{ paragraph.field_link.0.url }}" class="action-link tertiary">{{ paragraph.field_link.0.title }}</a>
-            {% endif %}
-        </div>
+<div class="base__featured-media {{bg}} {{position}}">
+  <div class="inner">
+    <div class="img">
+      {% if content.field_link.0 %}
+        <a href="{{ paragraph.field_link.0.url }}">
+      {% endif %}
+      {{content.field_media}}
+      {% if content.field_link.0 %}
+        </a>
+      {% endif %}
+    </div>
+    <div class="blurb">
+      {% if content.field_title.0 %}
+      <{{heading}}>{{content.field_title.0}}</{{heading}}>
+      {% endif %}
+      {{ content.field_rich_text }}
+      {% if paragraph.field_link.0.title %}
+      <a href="{{ paragraph.field_link.0.url }}" class="btn secondary">{{ paragraph.field_link.0.title }}</a>
+      {% endif %}
     </div>
   </div>
+</div>
 {% endblock %}

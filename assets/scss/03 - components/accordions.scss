@@ -8,11 +8,12 @@
     }
 
     .accordion-item {
-        border: 1px solid $gray-xl;
+        border: 1px solid $primary;
         margin-bottom: $space-md;
 
         h4 {
-            background: $gray-xl;
+            background: $primary;
+            color: #fff;
             cursor: pointer;
             display: block;
             font-size: $font-sm;
@@ -24,9 +25,8 @@
             text-transform: none;
 
             &::after {
-                border: 2px solid $primary;
                 border-radius: 100%;
-                color: $gray-dk;
+                color: $secondary-lt;
                 content: "\e90d";
                 font-family: icomoon;
                 font-size: 25px;
@@ -42,11 +42,10 @@
             }
 
             &.open {
-                background: $primary;
+                background: $primary-dk;
                 color: #fff;
 
                 &::after {
-                    border-color: $primary-lt;
                     color: #fff;
                     content: "\e90c";
                     line-height: 1.3em;
@@ -64,7 +63,7 @@
                 max-height: 0;
                 overflow: hidden;
                 padding: 0 $space-md;
-                @include transition (max-height .3s $cubic);
+                @include transition (max-height .3s $cubic, padding .4s $cubic);
 
                 @media print {
                     max-height: none !important

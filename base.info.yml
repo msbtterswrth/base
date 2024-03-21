@@ -3,9 +3,10 @@ type: theme
 description: 'Base Theme'
 package: Core
 version: VERSION
-core: 8.x
 core_version_requirement: ^9 || ^10
 base theme: claro
+ckeditor5-stylesheets:
+  - public/css/components/cke-typography.css
 libraries:
   - base/global
 regions:

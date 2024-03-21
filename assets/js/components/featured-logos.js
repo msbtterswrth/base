@@ -3,7 +3,7 @@
 
   Drupal.behaviors.featuredLogos = {
     attach: function (context, settings) {
-      $('.featured-logos .logo-slider').each(function () {
+      $(once('logo-slider', '.featured-logos .logo-slider', context)).each(function () {
         let $slider = $(this);
         if(!$slider.hasClass('slick-initialized')) {
           $slider.slick({

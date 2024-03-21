@@ -3,7 +3,7 @@
 
   Drupal.behaviors.testimonials = {
     attach: function (context, settings) {
-      $('.base__testimonials .slider').each(function(){
+      $(once('testimonials', '.base__testimonials .slider', context)).each(function(){
         let $slider = $(this);
         if (typeof $slider.slick !== 'undefined') {
           $slider.slick({

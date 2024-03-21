@@ -1,37 +1,40 @@
 @import 'variables.scss';
 
 //BUTTONS & LINKS
-@mixin button($background, $text, $outline: false, $large: false) {
+@mixin button($background, $bghover, $text, $outline: false, $large: false) {
   background: $background;
   border-radius: $border-radius-lg;
   border: 2px solid $background;
   box-shadow: none;
   color: $text;
-  outline: none !important;
-  font-family: $font-display;
-  font-size: $font-xs;
-  font-weight: 600;
-  letter-spacing: 1px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $font-script;
+  font-size: $font-xxs;
+  font-weight: 500;
   line-height: 1.5em;
   margin-bottom: $space-md;
-  padding: $space-xs $space-md;
+  outline: none !important;
+  padding: $space-xs $space-lg;
   position: relative;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   text-align: center;
-  text-decoration: none !important;
-  text-transform: uppercase;
+  text-decoration: none !important;  user-select: none;
+  vertical-align: middle;
   white-space: normal;
   z-index: 1;
   @include transition(background .3s linear, border .3s linear, color .3s linear);
 
   &:hover,
   &:focus {
-    background: none;
-    border: 2px solid $background;
-    color: $background;
+    background: $bghover;
+    border: 2px solid $bghover;
+    color: #fff;
   }
-  &:last-child {
-    margin-bottom: 0;
-  }
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
 
   @if $outline {
     background: none;
@@ -41,6 +44,7 @@
     &:hover,
     &:focus {
       background: $background;
+      border: 2px solid $background;
       color: $text;
     }
   }
@@ -53,33 +57,57 @@
 }
 
 @mixin action-link($background, $text) {
-  color: $text;
-  border-left: 4px solid $background;
+  background: none;
+  border-radius: 0;
+  color: $background;
+  font-family: $font-script;
   font-size: $font-xxs;
   font-weight: 600;
-  line-height: 24px;
-  padding-left: $space-sm;
-  text-decoration: none;
+  letter-spacing: 1px;
+  line-height: 1emm;
+  padding: 0 0 0 $space-sm;
+  text-decoration: none!important;
+  text-transform: uppercase;
   transition: padding 0.3s cubic-bezier(0, 0, 0.2, 1), color 0.3s linear, border 0.3s linear;
+  @if $background == $primary {
+    border-left: 4px solid $primary-lt;
+  } @else if $background == $secondary {
+    border-left: 4px solid $secondary-lt;
+  } @else if $background == $tertiary {
+    border-left: 4px solid $tertiary-lt;
+  } @else if $background == #000 {
+    border-left: 4px solid #000;
+  } @else if $background == #fff {
+    border-left: 4px solid #fff;
+  }
 
   &:hover,
   &:focus {
-    color: $background;
+    color: $background!important;
     padding-left: 20px;
+    @if $background == $primary {
+      border-left: 4px solid $primary-dk;
+    } @else if $background == $secondary {
+      border-left: 4px solid $secondary-dk;
+    } @else if $background == $tertiary {
+      border-left: 4px solid $tertiary-dk;
+    } @else if $background == #000 {
+      border-left: 4px solid $gray-dk;
+    }
   }
 }
 
 @mixin arrow-link($background) {
   color: $background;
-  font-family: $font-display;
-  font-size: $font-xs;
+  font-family: $font-script;
+  font-size: $font-xxs;
   font-weight: 600;
   letter-spacing: 1px;
   padding-right: $space-lg;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  transition: margin .3s linear, color .3s linear;
+  transition: margin .2s linear;
 
   &::after {
     content: "\e921";
@@ -90,11 +118,19 @@
     top: 50%;
     transition: right .3s linear;
     transform: translate(0%, -50%);
+    @if $background == $primary-lt {
+      color: $primary-dk;
+    } @else if $background == $secondary {
+      color: $secondary-dk;
+    } @else if $background == $tertiary {
+      color: $tertiary-dk;
+    } @else if $background == #000 {
+      color: $gray-dk;
+    }
   }
 
   &:hover,
   &:focus {
-    color: $secondary;
 
     &::after {
       right: calc(-1* $space-sm);

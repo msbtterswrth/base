@@ -1,7 +1,10 @@
 <?php
 
 use Drupal\base\Theme;
+use Drupal\Core\Link;
 use Drupal\node\Entity\NodeType;
+use Drupal\node\NodeInterface;
+use Drupal\taxonomy\TermInterface;
 
 function base_preprocess_html(array &$vars)
 {
@@ -10,6 +13,33 @@ function base_preprocess_html(array &$vars)
 function base_preprocess_page(array &$vars)
 {
   Theme::getSiteWrapClasses($vars);
+  $entitySubqueueStorage = \Drupal::entityTypeManager()->getStorage('entity_subqueue');
+  $nodeStorage = \Drupal::entityTypeManager()->getStorage('node');
+  $termStorage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
+  $quickLinks = $entitySubqueueStorage->load('search_modal_quick_links');
+  $vars['quick_links'] = [
+    '#theme' => 'item_list',
+    '#items' => [],
+  ];
+  foreach ($quickLinks->get('items') as $item) {
+    $node = $nodeStorage->load($item->target_id);
+    if (!$node instanceof NodeInterface) {
+      continue;
+    }
+    $vars['quick_links']['#items'][] = Link::fromTextAndUrl($node->getTitle(), $node->toUrl());
+  }
+  $topics = $entitySubqueueStorage->load('search_modal_topics');
+  $vars['topics'] = [
+    '#theme' => 'item_list',
+    '#items' => [],
+  ];
+  foreach ($topics->get('items') as $item) {
+    $term = $termStorage->load($item->target_id);
+    if (!$term instanceof TermInterface) {
+      continue;
+    }
+    $vars['topics']['#items'][] = Link::fromTextAndUrl($term->getName(), \Drupal\Core\Url::fromRoute('view.global_search.page_1', ['keywords' => $term->getName()]));
+  }
 }
 
 /**
@@ -31,6 +61,16 @@ function base_theme_suggestions_page_alter(array &$suggestions, array $variables
     $content_type = $node->bundle();
     $suggestions[] = 'page__' . $content_type;
   }
+}
+
+/**
+ * Implements hook_theme_suggestions_field_alter().
+ */
+function base_theme_suggestions_field_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  $suggestions[] = 'field__' . $element['#entity_type'] . '__' .
+  $element['#field_name'] . '__' . $element['#bundle'] . '__' .
+  $element['#view_mode'];
 }
 
 function base_theme_suggestions_block_alter(array &$suggestions, array $vars)

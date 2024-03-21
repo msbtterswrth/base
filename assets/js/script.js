@@ -16,21 +16,23 @@
     }
   }
 
-  //Hero :has polyfill for firefox 
+  //Hero :has polyfill for firefox
   function hasPoly(context) {
     $('.base__hero.has-text', context).parents('.banner').addClass('has-text');
   }
 
-  // Manually enable the Bootstrap SelectPicker.
-  function initSelectPicker(context) {
-    $('.select-picker', context).selectpicker({
-      dropupAuto: false
-    })
+  //Hero :hasimage
+  function hasheroImage(context) {
+    if (context.querySelector) {
+      if (context.querySelector('.base__hero.has-img')) {
+        document.querySelector('body').classList.add('has-hero-image')
+      }
+    }
+  }
 
-    $('.select-picker', context).click(function (item) {
-      let maxHeight = parseInt($(this).children('.dropdown-menu').css("max-height"), 10)
-      $(this).children('.dropdown-menu').css("max-height", maxHeight + 70)
-    });
+  // Responsive table wrap
+  function tableWrap(context) {
+    $('table', context).wrap('<div class="responsive-table"></div>');
   }
 
   // Various toggles
@@ -60,7 +62,7 @@
     // On enter for accessibility
     $('.nav-toggle').keypress(function (e) {
       if (e.which == 13) {
-        $('.menu-toggle').click();
+        $('.nav-toggle').click();
       }
     });
     $('.search-toggle').keypress(function (e) {
@@ -70,7 +72,7 @@
     });
     $('.nav-close').keypress(function (e) {
       if (e.which == 13) {
-        $('.menu-close').click();
+        $('.nav-close').click();
       }
     });
   }
@@ -87,6 +89,9 @@
       else {
         $(this).next('div').css('max-height', 0);
       }
+    });
+    $('.parent').click(function () {
+      $(this).toggleClass('open');
     });
   }
 
@@ -165,6 +170,8 @@
         hasPoly(context);
         externalLinks(context);
         hideEmptyDrawer(context);
+        hasheroImage(context);
+        tableWrap(context);
         this._isInvokedByDocumentReady = false;
 
       }

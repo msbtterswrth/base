@@ -28,10 +28,10 @@
  */
 #}
 {% set catch_cache = content|render %}
-<div{{ attributes }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
-  {% block content %}
-    {{content.field_sidebar}}
-  {% endblock %}
+<div{{attributes.addClass("block")}}>
+	{{ title_prefix }}
+	{{ title_suffix }}
+	{% block content %}
+		{{content.field_sidebar}}
+	{% endblock %}
 </div>

@@ -1,7 +1,12 @@
-<article{{ attributes.addClass('news-item') }}>
-    <div class="text">
-        <h3><a href="{{ url }}">{{ label }}</a></h3>
-        {{ content.body }}
-        <a href="{{ url }}" class="btn secondary small" aria-label="Read more about {{ label.0 }}">Read More</a>
-    </div>
+<article{{attributes.addClass("article","teaser")}}>
+	<div class="text">
+		{{ content.field_related_topics}}
+		<p class="date">
+			<strong>{{node.getCreatedTime()|date("F j, Y")}}</strong>
+		</p>
+		<h3>
+			<a href="{{ url }}">{{ label }}</a>
+		</h3>
+		<a href="{{ url }}" class="action-link white" aria-label="Read more about {{ label.0 }}">Read More</a>
+	</div>
 </article>

@@ -21,7 +21,7 @@
 
         .breadcrumb {
             background: none;
-            color: $gray-dk;
+            color: $secondary;
             font-size: 16px;
             margin: 20px 0;
             padding: 0;
@@ -50,11 +50,11 @@
             }
 
             a {
-                color: $secondary;
+                color: $primary;
 
                 &:hover,
                 &:focus {
-                    color: $primary;
+                    color: $primary-dk;
                 }
 
                 &.home {

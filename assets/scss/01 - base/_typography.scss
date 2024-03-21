@@ -1,23 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Maven+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Roboto+Condensed:wght@700&family=Roboto:wght@100;500&display=swap');
 @import '../utilities.scss';
-
-@font-face {
-  font-family: 'avantgarde_bold';
-  src: url('/themes/custom/base/assets/fonts/itcavantgardestd-bold.ttf-webfont.woff2') format('woff2'),
-    url('/themes/custom/base/assets/fonts/itcavantgardestd-bold.ttf-webfont.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'avantgarde_book';
-  src: url('/themes/custom/base/assets/fonts/itcavantgardestd-md.ttf-webfont.woff2') format('woff2'),
-    url('/themes/custom/base/assets/fonts/itcavantgardestd-md.ttf-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
 
 body {
   text-rendering: optimizeLegibility;
@@ -26,10 +8,11 @@ body {
   color: $gray-dk;
 }
 
-.site-wrap, .offcanvas {
+.site-wrap,
+.offcanvas {
   h1 {
     font-family: $font-display;
-    font-size: $font-lg;
+    font-size: $font-xl;
     font-weight: 700;
     line-height: 1.2em;
     margin: 0 0 $space-md 0;
@@ -94,7 +77,7 @@ body {
   p {
     font-size: $font-xs;
     line-height: 1.5em;
-    margin-bottom: $space-md;
+    margin: 0 0 $space-md 0;
 
     &.lead {
       text-transform: none;
@@ -102,6 +85,10 @@ body {
       font-size: $font-sm;
       line-height: 1.5em;
       margin: 0 0 $space-lg 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -142,7 +129,6 @@ body {
     &.two-col {
       columns: 2;
       column-gap: $space-xl;
-      padding: 0 0 0 $space-sm;
 
       @include breakpoint(sm-max) {
         columns: 1;
@@ -258,8 +244,133 @@ body {
     &:hover {
       color: darken($primary, 20%);
       text-decoration: underline $tertiary;
+      -webkit-text-decoration-line: underline;
+      -webkit-text-decoration-color: $tertiary;
     }
   }
+
+  //text links on backgrounds
+
+  .primary {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        color: $secondary-lt;
+        font-weight: 600;
+        text-decoration: underline $secondary-lt;
+        -webkit-text-decoration-line: underline;
+        -webkit-text-decoration-color: $secondary-lt;
+
+        &:hover,
+        &:focus {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .primary-lt {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        color: $secondary-lt;
+        font-weight: 600;
+        text-decoration: underline $secondary-lt;
+        -webkit-text-decoration-line: underline;
+        -webkit-text-decoration-color: $secondary-lt;
+
+        &:hover,
+        &:focus {
+          color: #fff;
+          text-decoration-color: $tertiary-lt;
+          -webkit-text-decoration-line: underline;
+          -webkit-text-decoration-color: $tertiary-lt;
+        }
+      }
+    }
+  }
+
+  .primary-dk {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        color: $secondary-lt;
+        font-weight: 600;
+        text-decoration: underline $secondary-lt;
+        -webkit-text-decoration-line: underline;
+        -webkit-text-decoration-color: $secondary-lt;
+
+        &:hover,
+        &:focus {
+          color: #fff;
+          text-decoration-color: $tertiary-lt;
+          -webkit-text-decoration-line: underline;
+          -webkit-text-decoration-color: $tertiary-lt;
+        }
+      }
+    }
+  }
+
+  .secondary {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        color: $primary;
+        font-weight: 600;
+        text-decoration: underline $secondary-dk;
+        -webkit-text-decoration-line: underline;
+        -webkit-text-decoration-color: $secondary-dk;
+
+        &:hover,
+        &:focus {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .tertiary {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        color: $primary;
+        font-weight: 600;
+        text-decoration: underline $tertiary-dk;
+        -webkit-text-decoration-line: underline;
+        -webkit-text-decoration-color: $tertiary-dk;
+
+        &:hover,
+        &:focus {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .black {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        color: $secondary-lt;
+        font-weight: 600;
+        text-decoration: underline $secondary-lt;
+        -webkit-text-decoration-line: underline;
+        -webkit-text-decoration-color: $secondary-lt;
+
+        &:hover,
+        &:focus {
+          color: #fff;
+          text-decoration-color: $tertiary-lt;
+          -webkit-text-decoration-line: underline;
+          -webkit-text-decoration-color: $tertiary-lt;
+        }
+      }
+    }
+  }
+
+  .gray,
+  .white {
+    a {
+      &:not([class*="btn"], [class*="action-link"], [class*="arrow-link"]) {
+        font-weight: 600;
+      }
+    }
+  }
+
 
   svg * {
     @include breakpoint(sm-max) {
@@ -287,12 +398,14 @@ body {
       max-width: 400px;
       text-align: left;
     }
-    
+
     &.pull-left {
+      float: left;
       margin: $space-sm $space-md $space-sm 0;
     }
 
     &.pull-right {
+      float: right;
       margin: $space-sm 0 $space-sm $space-md;
     }
 
@@ -315,8 +428,13 @@ body {
     }
   }
 
+  figure {
+    margin: $space-lg 0;
+  }
+
   figure,
   img {
+
     &.align-left {
       margin: $space-sm $space-md $space-sm 0;
     }
@@ -361,6 +479,7 @@ body {
       @include breakpoint(sm) {
         max-width: 50vw;
       }
+
       @include breakpoint(xs) {
         float: none;
         margin-left: 0;
@@ -385,10 +504,15 @@ body {
     }
   }
 
+  .responsive-table {
+    overflow-x: auto;
+    width: 100%;
+  }
+
   .table,
   table {
     border: 1px solid $primary;
-    border-collapse: inherit;
+    border-collapse: collapse;
     color: $gray-dk;
     font-size: $font-xs;
     line-height: 1.5em;
@@ -473,6 +597,64 @@ body {
         border: none;
         border-top: 1px solid $primary;
         padding: calc($space-lg/2) $space-md;
+      }
+    }
+  }
+
+  .colors {
+    display: grid;
+    gap: 15px;
+    grid: auto / 1fr 1fr 1fr 1fr;
+    margin-bottom: $space-md;
+    width: 40%;
+
+    @include breakpoint(sm-max) {
+      width: 100%;
+    }
+
+    .color {
+      aspect-ratio: 1/1;
+      display: block;
+
+      &.primary {
+        background: $primary;
+      }
+
+      &.primary-lt {
+        background: $primary-lt;
+      }
+
+      &.primary-dk {
+        background: $primary-dk;
+      }
+
+      &.primary-xdk {
+        background: $primary-xdk;
+      }
+
+
+      &.secondary {
+        background: $secondary;
+      }
+
+      &.secondary-lt {
+        background: $secondary-lt;
+      }
+
+      &.secondary-dk {
+        background: $secondary-dk;
+      }
+
+      &.tertiary {
+        background: $tertiary;
+      }
+
+      &.tertiary-lt {
+        background: $tertiary-lt;
+      }
+
+      &.tertiary-dk {
+        background: $tertiary-dk;
       }
     }
   }

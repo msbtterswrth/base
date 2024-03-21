@@ -21,7 +21,7 @@
         mask-size: cover;
         position: absolute;
         top: 100%;
-        width: 100%; 
+        width: 100%;
         z-index: 0;
     }
 
@@ -68,7 +68,7 @@
     &.white {
         background: #fff;
         color: $gray-dk;
-        
+
         &::after {
             background: #fff;
         }
@@ -93,6 +93,8 @@
         a {
             color: #fff;
             text-decoration: underline;
+            -webkit-text-decoration-line:  underline;
+            -webkit-text-decoration-color:  $tertiary;
 
             &:hover,
             &:focus {
@@ -145,11 +147,11 @@
         margin: $space-xl (-($space-sm)) (-($space-xl * 3));
         position: relative;
         z-index: 1;
-        
+
         @include breakpoint(sm-max) {
             margin: 0 0 -200px 0;
         }
-        
+
         .expanding-card {
             position: relative;
             margin-bottom: $space-xl;

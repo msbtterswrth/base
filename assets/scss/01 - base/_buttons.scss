@@ -2,117 +2,108 @@
 
 .site-wrap,
 .offcanvas {
-    .btn {
-        @include button($primary, #fff);
+  .btn {
+    &.primary {
+      @include button($primary-lt, $primary-dk, #000);
 
-        &.primary {
-            @include button($primary, #fff);
+      &.outline {
+        @include button($primary-lt, $primary-dk, #000, $outline: true)
+      }
 
-            &.outline {
-                @include button($primary, #fff, $outline: true)
-            }
-
-            &.large {
-                @include button($primary, #fff, $large: true);
-            }
-        }
-
-        &.secondary {
-            @include button($secondary, $gray-dk);
-
-            &.outline {
-                @include button($secondary, #fff, $outline: true)
-            }
-
-            &.large {
-                @include button($secondary, $gray-dk, $large: true);
-            }
-        }
-
-        &.tertiary {
-            @include button($tertiary, #fff);
-
-            &.outline {
-                @include button($tertiary, #fff, $outline: true)
-            }
-
-            &.large {
-                @include button($tertiary, #fff, $large: true);
-            }
-        }
-
-        &.gray {
-            @include button($gray-dk, #fff);
-
-            &.outline {
-                @include button($gray-dk, #fff, $outline: true)
-            }
-
-            &.large {
-                @include button($gray-dk, #fff, $large: true);
-            }
-        }
-
-        &.black {
-            background: #000;
-            color: #fff;
-
-            &:hover,
-            &:focus {
-                background: $gray-dk;
-            }
-        }
-
-        &.white {
-            background: #fff;
-            border-color: #fff;
-            color: #000;
-
-            &:hover,
-            &:focus {
-                background: none;
-                color: #fff;
-            }
-
-            &.outline {
-                background: none;
-                border-color: #fff;
-                color: #fff;
-
-                &:hover,
-                &:focus {
-                    background: #fff;
-                    color: #000;
-                }
-            }
-        }
+      &.large {
+        @include button($primary-lt, $primary-dk, #000, $large: true);
+      }
     }
 
-    .action-link {
-        &.primary {
-            @include action-link($primary, $gray-dk);
-        }
+    &.secondary {
+      @include button($secondary, $secondary-dk, #000);
 
-        &.secondary {
-            @include action-link($secondary, $gray-dk);
-        }
+      &.outline {
+        @include button($secondary, $secondary-dk, #000, $outline: true)
+      }
 
-        &.tertiary {
-            @include action-link($tertiary, $gray-dk);
-        }
+      &.large {
+        @include button($secondary, $secondary-dk, #000, $large: true);
+      }
     }
 
-    .arrow-link {
-        &.primary {
-            @include arrow-link($primary);
-        }
+    &.tertiary {
+      @include button($tertiary, $tertiary-dk, #000);
 
-        &.secondary {
-            @include arrow-link($secondary);
-        }
+      &.outline {
+        @include button($tertiary, $tertiary-dk, #000, $outline: true)
+      }
 
-        &.tertiary {
-            @include arrow-link($tertiary);
-        }
+      &.large {
+        @include button($tertiary, $tertiary-dk, #000, $large: true);
+      }
     }
+
+    &.black {
+      @include button(#000, $gray-dk, #fff);
+
+      &.outline {
+        @include button(#000, $gray-dk, #fff, $outline: true)
+      }
+
+      &.large {
+        @include button(#000, $gray-dk, #fff, $large: true);
+      }
+    }
+
+    &.white {
+      @include button(#fff, $gray, #000);
+
+      &.outline {
+        @include button(#fff, $gray, #000, $outline: true)
+      }
+
+      &.large {
+        @include button(#fff, $gray, #000, $large: true);
+      }
+    }
+  }
+
+  .action-link {
+    &.primary {
+      @include action-link($primary,  $gray-dk);
+    }
+
+    &.secondary {
+      @include action-link($secondary, $gray-dk);
+    }
+
+    &.tertiary {
+      @include action-link($tertiary, $gray-dk);
+    }
+
+    &.black {
+      @include action-link(#000, #fff);
+    }
+
+    &.white {
+      @include action-link(#fff, #000);
+    }
+  }
+
+  .arrow-link {
+    &.primary {
+      @include arrow-link($primary);
+    }
+
+    &.secondary {
+      @include arrow-link($secondary);
+    }
+
+    &.tertiary {
+      @include arrow-link($tertiary);
+    }
+    &.black {
+      @include arrow-link(#000);
+    }
+
+    &.white {
+      @include arrow-link(#fff);
+    }
+  }
 }

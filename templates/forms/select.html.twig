@@ -12,7 +12,8 @@
  * @ingroup themeable
  */
 #}
-{% spaceless %}
+
+{% apply spaceless %}
   <select{{ attributes.addClass('selectpicker') }}>
     {% for option in options %}
       {% if option.type == 'optgroup' %}
@@ -26,4 +27,4 @@
       {% endif %}
     {% endfor %}
   </select>
-{% endspaceless %}
+{% endapply %}

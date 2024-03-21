@@ -78,6 +78,18 @@
         }
     }
 
+    &.six {
+        grid-template-columns: repeat(6, 1fr);
+
+        @include breakpoint(sm) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include breakpoint(xs) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
     .container {
         padding: 0;
         width: auto !important;

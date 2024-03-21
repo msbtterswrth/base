@@ -1,306 +1,110 @@
 @import '../utilities.scss';
 
-.base__facts {
-    margin: $space-lg 0;
-
-    &.center {
-        text-align: center;
-
-        .blurb {
-            @include breakpoint(lg) {
-                margin: 0 auto;
-                max-width: 75%;
-            }
-        }
-    }
-
-    &.no-img {
-        .inner {
-            .blurb {
-                a {
-                    @include action-link($primary, $gray-dk);
-                }
-            }
-        }
-    }
-
-    &.has-img {
-        .inner {
-            align-items: center;
-            display: grid;
-            grid: auto / 2fr 1fr;
-
-            @include breakpoint(sm-max) {
-                grid: auto / 100%;
-                margin: 0;
-            }
-
-            .blurb {
-                color: #fff;
-                margin-right: -($space-lg);
-                padding: ($space-xl * 3) $space-xl;
-                position: relative;
-
-                @include breakpoint(sm-max) {
-                    background: none !important;
-                    color: $gray-dk;
-                    margin: 0 0 $space-md 0;
-                    padding: 0;
-                }
-
-                &::before {
-                    background: rgba(#000, .6);
-                    content: "";
-                    height: 100%;
-                    left: 0;
-                    position: absolute;
-                    top: 0;
-                    width: 100%;
-
-                    @include breakpoint(sm-max) {
-                        display: none;
-                    }
-                }
-
-                > * {
-                    position: relative
-                }
-
-                a {
-                    @include action-link($tertiary, #fff);
-
-                    @include breakpoint(sm-max) {
-                        color: $primary;
-                    }
-
-                    &:hover,
-                    &:focus {
-                        @include breakpoint(sm-max) {
-                            border-left-color: $primary;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .fact {
-        color: #fff;
-
-        .number {
-            color: #fff;
-            display: flex;
-            font-size: $font-xxl;
-            font-weight: 600;
-            gap: $space-xs;
-            justify-content: center;
-            line-height: 1em;
-            margin-bottom: $space-sm;
-
-            @include breakpoint(sm-max) {
-                font-size: $font-xl;
-            }
-        }
-    }
-
-    .grid {
-        margin: $space-lg 0;
-
-        @include breakpoint(sm-max) {
-            margin: $space-md 0;
-        }
-    }
-
-    .grid,
-    .facts-list {
-        &.primary {
-            .fact {
-                background: $primary;
-
-                a {
-
-                    &:hover,
-                    &:focus {
-                        color: $primary-dk;
-                    }
-                }
-            }
-        }
-
-        &.secondary {
-            .fact {
-                background: $secondary;
-
-                a {
-
-                    &:hover,
-                    &:focus {
-                        color: $secondary-dk;
-                    }
-                }
-            }
-        }
-
-        &.tertiary {
-            .fact {
-                background: $tertiary;
-
-                a {
-
-                    &:hover,
-                    &:focus {
-                        color: $tertiary-dk;
-                    }
-                }
-            }
-        }
-
-        &.gray {
-            .fact {
-                background: $gray-dk;
-
-                a {
-
-                    &:hover,
-                    &:focus {
-                        color: #000;
-                    }
-                }
-            }
-        }
-
-        &.black {
-            .fact {
-                background: #000;
-
-                a {
-
-                    &:hover,
-                    &:focus {
-                        color: $gray;
-                    }
-                }
-            }
-        }
-
-        &.white {
-            .fact {
-                background: #fff;
-                color: $gray-dk;
-
-                a {
-                    color: $primary;
-
-                    &:hover,
-                    &focus {
-                        color: $primary-dk;
-                    }
-                }
-            }
-        }
-    }
-}
-
 .fact {
-    align-self: center;
+  height: 100%;
+
+  .inner {
+    height: 100%;
     padding: $space-lg;
     text-align: center;
+  }
 
-    .number {
-        color: $primary;
-        display: flex;
-        font-family: $font-display;
-        font-size: 128px;
-        font-weight: 600;
-        gap: $space-xs;
-        justify-content: center;
-        line-height: 1em;
-        margin-bottom: $space-sm;
+  &.primary {
+    .inner {
+      background: $primary;
+      color: #fff;
+    }
+  }
 
-        @include breakpoint(sm-max) {
-            font-size: $font-xl;
-        }
+  &.primary-lt {
+    .inner {
+      background: $primary-lt;
+      color: #000;
+    }
+  }
+
+  &.primary-dk {
+    .inner {
+      background: $primary-dk;
+      color: #fff;
+    }
+  }
+
+  &.secondary {
+    .inner {
+      background: $secondary;
+      color: #000;
+    }
+  }
+
+  &.tertiary {
+    .inner {
+      background: $tertiary;
+      color: #000;
+    }
+  }
+
+  &.gray {
+    .inner {
+      background: $gray-xl;
+      color: #000;
+    }
+  }
+
+  &.black {
+    .inner {
+      background: #000;
+      color: #fff;
+    }
+  }
+
+  &.white {
+    .inner {
+      background: #fff;
+      color: #000;
+    }
+  }
+
+  &.bordered {
+    .inner {
+      background: #fff;
+      border: 2px solid $secondary;
+      color: #000;
+    }
+  }
+
+  .number {
+    display: flex;
+    font-family: $font-script;
+    font-size: $font-hero;
+    font-weight: 600;
+    gap: $space-xs;
+    justify-content: center;
+    line-height: 1em;
+    margin-bottom: $space-sm;
+
+    @include breakpoint(sm-max) {
+      font-size: $font-xl;
+    }
+  }
+
+  p {
+    font-family: $font-display;
+    font-size: $font-lg;
+    margin: 0 auto;
+    max-width: 250px;
+
+    + a {
+      background: rgba(#fff, .2);
+      border-radius: $border-radius;
+      color: #fff;
+      display: inline-block;
+      padding: $space-xs $space-md;
+      text-decoration: none;
     }
 
-    p {
-        font-size: $font-lg;
-        margin: 0 auto;
-        max-width: 250px;
-
-        + a {
-            background: rgba(#fff, .2);
-            border-radius: $border-radius;
-            color: #fff;
-            display: inline-block;
-            padding: $space-xs $space-md;
-            text-decoration: none;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
+    &:last-child {
+      margin-bottom: 0;
     }
-}
-
-.facts-list {
-    color: #fff;
-    padding: 0 $space-lg;
-    width: 100%;
-    z-index: 1;
-
-    &.primary {
-        background: $primary;
-
-        .fact + .fact {
-            border-top-color: $primary-lt;
-        }
-    }
-
-    &.secondary {
-        background: $secondary;
-
-        .fact + .fact {
-            border-top-color: $secondary-lt;
-        }
-    }
-
-    &.tertiary {
-        background: $tertiary;
-
-        .fact + .fact {
-            border-top-color: $tertiary-lt;
-        }
-    }
-
-    &.gray {
-        background: $gray-dk;
-
-        .fact + .fact {
-            border-top-color: $gray;
-        }
-    }
-
-    &.black {
-        background: #000;
-
-        .fact + .fact {
-            border-top-color: $gray-dk;
-        }
-    }
-
-    &.white {
-        background: #fff;
-
-        .fact + .fact {
-            border-top-color: $gray;
-        }
-    }
-
-    .fact {
-        padding: $space-lg 0;
-
-        + .fact {
-            border-top: 1px solid;
-        }
-    }
+  }
 }
