@@ -1,6 +1,5 @@
 {{ attach_library('base/hero') }}
 {% set catch_cache = content|render %}
-{% set position = content.field_position[0] %}
 {% if content.field_image[0] %}
 {% set img = 'has-img' %}
 {% endif %}
@@ -18,7 +17,7 @@
     </div>
     {% endif %}
   </div>
-  <div class="blurb {{ position }}">
+  <div class="blurb">
     <div class="container">
       <div class="inner">
         {% if content.field_title[0] %}
