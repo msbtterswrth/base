@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.full
+    - field.field.node.page.field_bottom_sections
     - field.field.node.page.field_content_components
     - field.field.node.page.field_hero
     - field.field.node.page.field_media
@@ -30,6 +31,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_bottom_sections: true
   field_hero: true
   field_media: true
   field_sidebar_components: true

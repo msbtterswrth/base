@@ -95,13 +95,13 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
   /**
    * @return array|\string[]
    */
-  public function getCacheTags() {
-    if (!$this->node) {
-      return parent::getCacheTags();
-    }
-    return Cache::mergeTags([
-      'node:' . $this->node->id(),
-    ], parent::getCacheTags());
-  }
+  // public function getCacheTags() {
+  //   if (!$this->node) {
+  //     return parent::getCacheTags();
+  //   }
+  //   return Cache::mergeTags([
+  //     'node:' . $this->node->id(),
+  //   ], parent::getCacheTags());
+  // }
 
 }

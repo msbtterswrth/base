@@ -14,6 +14,7 @@ module:
   config: 0
   contextual: 0
   crop: 0
+  current_page_crumb: 0
   datetime: 0
   dblog: 0
   dynamic_page_cache: 0
@@ -61,6 +62,7 @@ module:
   views_ui: 0
   webform: 0
   webform_ui: 0
+  pathauto: 1
   views: 10
   paragraphs: 11
   standard: 1000

@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.page.field_bottom_sections
     - field.field.node.page.field_content_components
     - field.field.node.page.field_hero
     - field.field.node.page.field_media
@@ -19,6 +20,15 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  field_bottom_sections:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
   field_content_components:
     type: entity_reference_revisions_entity_view
     label: hidden
