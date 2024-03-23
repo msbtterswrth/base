@@ -4,6 +4,7 @@
 # We allow settings.php to be committed since Acquia's filesystem is read-only
 # @see https://www.drupal.org/project/drupal/issues/3257119
 /web/core
+/node_modules/*
 /vendor/
 /web/sites/*/settings.*.php
 /web/sites/*/services*.yml
@@ -104,3 +105,4 @@ oauth_keys/
 
 # env-file
 /.env*
+node_modules/*
