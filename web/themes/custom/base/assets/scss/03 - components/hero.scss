@@ -9,7 +9,7 @@
 }
 
 .base__hero {
-  background: $primary-xdk;
+  background: $gray-xdk;
   border-bottom: 4px solid $secondary;
   position: relative;
 
@@ -112,7 +112,7 @@
   }
 
   &:not(.has-img) {
-    background: $primary-xdk;
+    background: $gray-xdk;
     color: #fff;
     overflow: hidden;
     padding: $space-xl 0;

@@ -4,14 +4,14 @@
 .offcanvas {
   .btn {
     &.primary {
-      @include button($primary-lt, $primary-dk, #000);
+      @include button($primary, $primary-dk, #000);
 
       &.outline {
-        @include button($primary-lt, $primary-dk, #000, $outline: true)
+        @include button($primary, $primary-dk, #000, $outline: true)
       }
 
       &.large {
-        @include button($primary-lt, $primary-dk, #000, $large: true);
+        @include button($primary, $primary-dk, #000, $large: true);
       }
     }
 
