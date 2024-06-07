@@ -2,8 +2,8 @@
 
 .site-wrap {
   footer {
-    border-top: 4px solid $primary;
-    background: $gray-xdk;
+    border-top: 4px solid $secondary;
+    background: url(/themes/custom/base/assets/img/footer-pattern.svg) repeat $primary-xdk;
     color: #fff;
   }
 

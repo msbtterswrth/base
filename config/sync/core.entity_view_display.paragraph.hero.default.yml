@@ -19,7 +19,7 @@ mode: default
 content:
   field_background_video:
     type: entity_reference_entity_view
-    label: hidden
+    label: above
     settings:
       view_mode: default
       link: false

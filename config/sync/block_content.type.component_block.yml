@@ -1,8 +1,0 @@
-uuid: 276c1058-af32-48af-be0a-32c9253065e1
-langcode: en
-status: true
-dependencies: {  }
-id: component_block
-label: 'Component Block'
-revision: 0
-description: ''
