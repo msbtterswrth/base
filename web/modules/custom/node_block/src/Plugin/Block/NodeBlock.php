@@ -9,10 +9,11 @@ use Drupal\Core\Entity\EntityViewBuilderInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\node\Entity\Node;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
+ * Provides a block for nodes.
+ *
  * @Block(
  *   id = "node_block",
  *   admin_label = @Translation("Node Block")
@@ -20,41 +21,69 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
-  /** @var EntityFieldManagerInterface $entityManager */
+  /**
+   * The field manager interface.
+   *
+   * @var \Drupal\Core\Entity\EntityFieldManagerInterface*/
   protected $entityManager;
 
-  /** @var EntityViewBuilderInterface $viewBuilder */
+  /**
+   * The entity view build interface.
+   *
+   * @var \Drupal\Core\Entity\EntityViewBuilderInterface
+   */
   protected $viewBuilder;
 
-  protected $view_mode = 'block';
+  /**
+   * The view mode.
+   *
+   * @var string
+   */
+  protected $viewMode = 'block';
 
+  /**
+   * The node.
+   *
+   * @var \Drupal\node\Entity\NodeInterface
+   */
+  protected $node = NULL;
+
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(EntityFieldManagerInterface $entityManager, EntityViewBuilderInterface $viewBuilder, array $configuration, $plugin_id, $plugin_definition) {
     $this->entityManager = $entityManager;
     $this->viewBuilder = $viewBuilder;
     parent::__construct($configuration, $plugin_id, $plugin_definition);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     $entityManager = \Drupal::service('entity_field.manager');
     $viewBuilder = \Drupal::entityTypeManager()->getViewBuilder('node');
     return new static($entityManager, $viewBuilder, $configuration, $plugin_id, $plugin_definition);
   }
 
+  /**
+   * Build the block.
+   */
   public function build() {
     $request = \Drupal::request();
-    $node = $request->attributes->get('node');
-    if ($node) {
-      if (!is_object($node)) {
-        $node = Node::load($node);
+    $this->node = $request->attributes->get('node');
+    if ($this->node) {
+      if (!is_object($this->node)) {
+        $this->node = Node::load($this->node);
       }
     }
 
     $build = [];
-    if ($node) {
-      $fields = $this->entityManager->getFieldDefinitions('node', $node->bundle());
+    if ($this->node) {
+      $fields = $this->entityManager->getFieldDefinitions('node', $this->node->bundle());
       foreach ($fields as $name => $definition) {
-        if (!$node->get($name)->isEmpty()) {
-          $build[$name] = $this->viewBuilder->viewField($node->get($name), $this->view_mode);
+        if (!$this->node->get($name)->isEmpty()) {
+          $build[$name] = $this->viewBuilder->viewField($this->node->get($name), $this->viewMode);
         }
       }
     }
@@ -62,12 +91,18 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
     return $build;
   }
 
+  /**
+   * Clear the default theme configuration.
+   */
   public function defaultConfiguration() {
     return [
       'theme_suggestion' => '',
     ];
   }
 
+  /**
+   * Create the array of theme suggestions.
+   */
   public function blockForm($form, FormStateInterface $form_state) {
     return [
       'theme_suggestion' => [
@@ -79,12 +114,15 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
     ];
   }
 
+  /**
+   * Provide the theme suggestions.
+   */
   public function blockSubmit($form, FormStateInterface $form_state) {
     $this->configuration['theme_suggestion'] = $form_state->getValue('theme_suggestion');
   }
 
   /**
-   * @return \string[]
+   * {@inheritdoc}
    */
   public function getCacheContexts() {
     return Cache::mergeContexts([
@@ -93,15 +131,15 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
   }
 
   /**
-   * @return array|\string[]
+   * {@inheritdoc}
    */
-  // public function getCacheTags() {
-  //   if (!$this->node) {
-  //     return parent::getCacheTags();
-  //   }
-  //   return Cache::mergeTags([
-  //     'node:' . $this->node->id(),
-  //   ], parent::getCacheTags());
-  // }
+  public function getCacheTags() {
+    if (!$this->node) {
+      return parent::getCacheTags();
+    }
+    return Cache::mergeTags([
+      'node:' . $this->node->id(),
+    ], parent::getCacheTags());
+  }
 
 }
