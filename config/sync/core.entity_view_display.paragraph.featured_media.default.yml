@@ -10,9 +10,11 @@ dependencies:
     - field.field.paragraph.featured_media.field_position
     - field.field.paragraph.featured_media.field_rich_text
     - field.field.paragraph.featured_media.field_title
+    - image.style.800x450
     - paragraphs.paragraphs_type.featured_media
   module:
     - link
+    - media
     - options
     - text
 id: paragraph.featured_media.default
@@ -47,11 +49,13 @@ content:
     weight: 7
     region: content
   field_media:
-    type: entity_reference_entity_view
+    type: media_thumbnail
     label: hidden
     settings:
-      view_mode: default
-      link: false
+      image_link: ''
+      image_style: 800x450
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 5
     region: content
