@@ -865,6 +865,3 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-if (empty($settings['config_sync_directory'])) {
-  $settings['config_sync_directory'] = '../config/sync';
-}
