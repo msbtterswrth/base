@@ -1,0 +1,7 @@
+block.settings.node_block:
+  type: block_settings
+  label: 'Node Block settings'
+  mapping:
+    theme_suggestion:
+      type: string
+      label: 'Theme suggestion'

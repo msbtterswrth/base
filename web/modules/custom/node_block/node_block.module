@@ -1,10 +1,22 @@
 <?php
 
-function node_block_theme_suggestions_block_alter(array &$suggestions, array $vars) {
-  // Support for node block theme suggestions
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * @file
+ * Hooks and theme helpers for the Node Block module.
+ */
+
+/**
+ * Implements hook_theme_suggestions_block_alter().
+ */
+function node_block_theme_suggestions_block_alter(array &$suggestions, array $vars): void {
+  // Support for node block theme suggestions.
   if (isset($vars['elements']['#configuration']['theme_suggestion'])) {
     $base_plugin_id = str_replace('-', '_', $vars['elements']['#base_plugin_id']);
     $theme_suggestion = $vars['elements']['#configuration']['theme_suggestion'];
+
     if (!empty($theme_suggestion)) {
       $theme_suggestion = preg_replace('@[^a-z0-9]+@', '_', strtolower($theme_suggestion));
       $suggestions[] = 'block__' . $base_plugin_id . '__' . $theme_suggestion;
@@ -13,16 +25,29 @@ function node_block_theme_suggestions_block_alter(array &$suggestions, array $va
 }
 
 /**
+ * Implements hook_preprocess_block().
+ */
+function node_block_preprocess_block(array &$variables): void {
+  $node = \Drupal::routeMatch()->getParameter('node');
+
+  if ($node instanceof NodeInterface) {
+    $variables['node'] = $node;
+  }
+}
+
+/**
  * Implements hook_block_build_BASE_BLOCK_ID_alter().
  */
-function node_block_block_build_node_block_alter(array &$build, \Drupal\Core\Block\BlockPluginInterface $block) {
+function node_block_block_build_node_block_alter(array &$build, BlockPluginInterface $block): void {
   // Skip BigPipe for this block.
   $build['#create_placeholder'] = FALSE;
 }
 
 /**
- * Implements hook_preprocess_HOOK().
+ * Implements hook_help().
  */
-function node_block_preprocess_block(&$vars) {
-  $vars['node'] = \Drupal::request()->get('node');
+function node_block_help($route_name, $route_match) {
+  if ($route_name === 'help.page.node_block') {
+    return '<p>Provides a block that renders fields from the current node. You can create custom Twig templates using theme suggestions.</p>';
+  }
 }
