@@ -2,6 +2,7 @@
 
 namespace Drupal\node_block\Plugin\Block;
 
+use Drupal\Core\Block\Attribute\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
@@ -9,18 +10,15 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityViewBuilderInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * Provides a block for nodes.
- *
- * @Block(
- *   id = "node_block",
- *   admin_label = @Translation("Node Block")
- * )
- */
+#[Block(
+  id: 'node_block',
+  admin_label: new TranslatableMarkup('Node Block'),
+)]
 class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
@@ -28,42 +26,42 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @var \Drupal\Core\Entity\EntityFieldManagerInterface
    */
-  protected $entityFieldManager;
+  protected EntityFieldManagerInterface $entityFieldManager;
 
   /**
    * The node view builder.
    *
    * @var \Drupal\Core\Entity\EntityViewBuilderInterface
    */
-  protected $viewBuilder;
+  protected EntityViewBuilderInterface $viewBuilder;
 
   /**
    * The node storage.
    *
    * @var \Drupal\Core\Entity\EntityStorageInterface
    */
-  protected $nodeStorage;
+  protected EntityStorageInterface $nodeStorage;
 
   /**
    * The request stack.
    *
    * @var \Symfony\Component\HttpFoundation\RequestStack
    */
-  protected $requestStack;
+  protected RequestStack $requestStack;
 
   /**
    * The view mode.
    *
    * @var string
    */
-  protected $viewMode = 'block';
+  protected string $viewMode = 'block';
 
   /**
    * The current node.
    *
    * @var \Drupal\node\NodeInterface|null
    */
-  protected $node;
+  protected ?NodeInterface $node = NULL;
 
   /**
    * Constructs a NodeBlock instance.
@@ -97,16 +95,15 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
     $this->viewBuilder = $view_builder;
     $this->nodeStorage = $node_storage;
     $this->requestStack = $request_stack;
-    $this->node = NULL;
   }
 
   /**
    * {@inheritdoc}
    */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): self {
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition): static {
     $entity_type_manager = $container->get('entity_type.manager');
 
-    return new self(
+    return new static(
       $configuration,
       $plugin_id,
       $plugin_definition,
@@ -134,7 +131,7 @@ class NodeBlock extends BlockBase implements ContainerFactoryPluginInterface {
     if ($this->node instanceof NodeInterface) {
       $fields = $this->entityFieldManager->getFieldDefinitions('node', $this->node->bundle());
 
-      foreach ($fields as $name => $definition) {
+      foreach (array_keys($fields) as $name) {
         if (!$this->node->get($name)->isEmpty()) {
           $build[$name] = $this->viewBuilder->viewField($this->node->get($name), $this->viewMode);
         }

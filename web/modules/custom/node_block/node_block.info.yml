@@ -2,6 +2,6 @@ name: 'Node Block'
 description: 'Provides a block that renders fields from the current node with theme suggestions.'
 package: 'Node Block'
 type: module
-core_version_requirement: ^10 || ^11
+core_version_requirement: ^10.3 || ^11
 dependencies:
-  - node
+  - drupal:node

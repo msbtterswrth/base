@@ -1,5 +1,5 @@
 block.settings.node_block:
-  type: block_settings
+  type: machine_name
   label: 'Node Block settings'
   mapping:
     theme_suggestion:

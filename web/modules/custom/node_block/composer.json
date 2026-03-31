@@ -4,6 +4,6 @@
   "description": "Provides a block that renders fields from the current node with theme suggestions.",
   "license": "GPL-2.0-or-later",
   "require": {
-    "drupal/core": "^10 || ^11"
+    "drupal/core": "^10.3 || ^11"
   }
 }
