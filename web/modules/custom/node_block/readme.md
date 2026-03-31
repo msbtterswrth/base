@@ -26,23 +26,19 @@ Entity Block is a powerful and flexible module for placing specific entities as 
 
 #### Key differences
 
-1. Context-aware by default, which is ideal for layouts that should adapt to whatever node is being viewed.
+1. Context-aware by default, which is ideal for layouts that should adapt to whatever node is being viewed.  
+  **Node Block:** Automatically uses the current node from the route  
+  **Entity Block:** Requires selecting a specific entity
 
-Node Block: Automatically uses the current node from the route
-Entity Block: Requires selecting a specific entity
+2. Theme-first approach which is a better fit for teams working primarily in SDC, Twig and design systems.  
+  **Node Block:** Designed around Twig templates and theme suggestions  
+  **Entity Block:** Focused on UI configuration and view modes
 
-2. Theme-first approach which is a better fit for teams working primarily in SDC, Twig and design systems.
+3. Field-level flexibility avoids the need to create and manage multiple view modes.  
+  **Node Block:** Exposes fields directly for granular control in templates  
+  **Entity Block:** Renders entities via view modes
 
-Node Block: Designed around Twig templates and theme suggestions
-Entity Block: Focused on UI configuration and view modes
-
-3. Field-level flexibility avoids the need to create and manage multiple view modes.
-
-Node Block: Exposes fields directly for granular control in templates
-Entity Block: Renders entities via view modes
-
-4. Minimal configuration optimizes for fast iteration during theming.
-
+4. Minimal configuration optimizes for fast iteration during theming.  
 Place block → (optional) add theme suggestion → create Twig template
 
 ## Requirements
@@ -62,7 +58,7 @@ block--node-block--hero.html.twig
 
 ## Theming
 Fields are available via:
-- `content.field_*`s
+- `content.field_*`
 - `node` (via preprocess hook)
 
 ## Limitations
